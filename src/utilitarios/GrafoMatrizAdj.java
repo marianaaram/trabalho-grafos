@@ -14,37 +14,36 @@ public class GrafoMatrizAdj {
     private int matriz[][];
     private int numVertices;
 
-    //Construtor
+    // Construtor
     public GrafoMatrizAdj(int numVertices) {
         this.matriz = new int[numVertices][numVertices];
         this.numVertices = numVertices;
     }
 
-    //Adiciona aresta nao direcionado
+    // Adiciona aresta nao direcionado
     public void addAresta(int i, int j) {
-        //Desconsiderar a linha e coluna 0
+        // Desconsiderar a linha e coluna 0
         i--;
         j--;
 
-        if (i < 0 || j < 0 || i >= numVertices || j >=numVertices) {
+        if (i < 0 || j < 0 || i >= numVertices || j >= numVertices) {
             System.out.println("Vértices inválidos");
             return;
         } else {
-            if(i==j){
-                matriz[i][j] = 1; //Laço
+            if (i == j) {
+                matriz[i][j] = 1; // Laço
                 System.out.println("Aresta criada com sucesso");
-            }
-            else{
-                matriz[i][j] ++;
-                matriz[j][i] ++;
+            } else {
+                matriz[i][j]++;
+                matriz[j][i]++;
                 System.out.println("Aresta criada com sucesso");
             }
         }
     }
 
-    //Adiciona aresta direcionado
+    // Adiciona aresta direcionado
     public void addArestaDir(int destino, int origem) {
-        //Desconsiderar a linha e coluna 0
+        // Desconsiderar a linha e coluna 0
         destino--;
         origem--;
 
@@ -52,7 +51,7 @@ public class GrafoMatrizAdj {
             System.out.println("Vértices inválidos");
             return;
         } else {
-            matriz[origem][destino] ++;
+            matriz[origem][destino]++;
             System.out.println("Aresta criada com sucesso");
         }
     }
@@ -87,24 +86,23 @@ public class GrafoMatrizAdj {
         }
     }
 
-    //Remove aresta 
+    // Remove aresta
     public void removeAresta(int i, int j) {
         i--;
         j--;
 
-        if( i >= numVertices || j >=numVertices ||matriz[i][j]==0){
+        if (i >= numVertices || j >= numVertices || matriz[i][j] == 0) {
             System.out.println("Essa aresta não existe\n");
-        }
-        else{
+        } else {
             matriz[i][j] = 0;
             matriz[j][i] = 0;
             System.out.println("Aresta removida!\n");
         }
-        
+
     }
 
-    // Mostra a representação da matriz 
-     public void imprimizrMatriz() {
+    // Mostra a representação da matriz
+    public void imprimizrMatriz() {
         for (int i = 0; i < numVertices; i++) {
             for (int j = 0; j < numVertices; j++) {
                 System.out.print(matriz[i][j] + " ");
@@ -112,26 +110,29 @@ public class GrafoMatrizAdj {
             System.out.println();
         }
     }
-    //retorna os sucessores
+
+    // retorna os sucessores
     public List<Integer> getSucessores(int v) {
-    List<Integer> sucessores = new ArrayList<>();
-    for (int i = 0; i < numVertices; i++) {
-        if (matriz[v][i] == 1) {
-            sucessores.add(i);
+        List<Integer> sucessores = new ArrayList<>();
+        for (int i = 0; i < numVertices; i++) {
+            if (matriz[v][i] == 1) {
+                sucessores.add(i);
+            }
         }
+        return sucessores;
     }
-    return sucessores;
-    }
-    //retorna os predecessores
+
+    // retorna os predecessores
     public List<Integer> getPredecessores(int v) {
-    List<Integer> predecessores = new ArrayList<>();
-    for (int i = 0; i < numVertices; i++) {
-        if (matriz[i][v] == 1) {
-            predecessores.add(i);
+        List<Integer> predecessores = new ArrayList<>();
+        for (int i = 0; i < numVertices; i++) {
+            if (matriz[i][v] == 1) {
+                predecessores.add(i);
+            }
         }
+        return predecessores;
     }
-    return predecessores;
-}
+
     public int getPesoAresta(int i, int j) {
         return matriz[i][j];
     }
@@ -156,7 +157,7 @@ public class GrafoMatrizAdj {
             custos.put(i, Integer.MAX_VALUE);
         }
         custos.put(origem, 0);
-        filaPrioridade.add(new int[]{origem, 0});
+        filaPrioridade.add(new int[] { origem, 0 });
 
         while (!filaPrioridade.isEmpty()) {
             int[] verticeAtual = filaPrioridade.poll();
@@ -173,7 +174,7 @@ public class GrafoMatrizAdj {
                     if (novoCusto < custos.get(vizinho)) {
                         custos.put(vizinho, novoCusto);
                         predecessores.put(vizinho, vertice);
-                        filaPrioridade.add(new int[]{vizinho, novoCusto});
+                        filaPrioridade.add(new int[] { vizinho, novoCusto });
                     }
                 }
             }
@@ -308,10 +309,11 @@ public class GrafoMatrizAdj {
         int grauEntradaReferencia = grauEntrada(1); // Obtemos o grau de entrada do primeiro vértice como referência
         for (int vertice = 2; vertice <= numVertices; vertice++) {
             if (grauSaida(vertice) != grauSaidaReferencia || grauEntrada(vertice) != grauEntradaReferencia) {
-                return false; // Se algum vértice tem um grau de saída ou de entrada diferente, o grafo não é regular
+                return false; // Se algum vértice tem um grau de saída ou de entrada diferente, o grafo não é
+                              // regular
             }
         }
-        return true; 
+        return true;
     }
 
     public void bfsPonderada(int vertice1) {
@@ -320,24 +322,24 @@ public class GrafoMatrizAdj {
             System.out.println("\nVértice inválido.");
             return;
         }
-    
+
         // Inicializa um array para controlar os vértices visitados
         boolean[] visitados = new boolean[numVertices + 1];
-    
+
         // Inicializa uma fila para a busca em largura
         Queue<Integer> fila = new LinkedList<>();
-    
+
         // Marca o vértice inicial como visitado e o adiciona à fila
         visitados[vertice1] = true;
         fila.add(vertice1);
-    
+
         // Enquanto a fila não estiver vazia
         System.out.print("\nA ordem da busca é: [ ");
         while (!fila.isEmpty()) {
             // Remove o vértice da fila e imprime seu valor
             int verticeAtual = fila.poll();
             System.out.print(verticeAtual + " ");
-    
+
             // Percorre todos os vizinhos do vértice atual
             for (int vizinho = 1; vizinho <= numVertices; vizinho++) {
                 // Se houver uma aresta entre o vértice atual e o vizinho
@@ -352,28 +354,28 @@ public class GrafoMatrizAdj {
         }
         System.out.print("]");
     }
-    
+
     public void dfsPonderada(int vertice1) {
         // Verifica se o vértice fornecido é válido
         if (vertice1 < 1 || vertice1 > numVertices) {
             System.out.println("\nVértice inválido.");
             return;
         }
-    
+
         // Inicializa um array para controlar os vértices visitados
         boolean[] visitados = new boolean[numVertices + 1];
-    
+
         // Chama o método auxiliar para realizar a DFS a partir do vértice fornecido
         System.out.print("\nA ordem da busca é: [ ");
         dfsUtilPonderada(vertice1, visitados);
         System.out.print("]");
     }
-    
+
     private void dfsUtilPonderada(int vertice, boolean[] visitados) {
         // Marca o vértice atual como visitado e imprime
         visitados[vertice] = true;
         System.out.print(vertice + " ");
-    
+
         // Itera sobre todos os vértices
         for (int vizinho = 1; vizinho <= numVertices; vizinho++) {
             // Se houver uma aresta entre o vértice atual e o vizinho
@@ -385,5 +387,5 @@ public class GrafoMatrizAdj {
             }
         }
     }
-    
+
 }

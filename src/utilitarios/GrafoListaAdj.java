@@ -19,17 +19,17 @@ public class GrafoListaAdj {
     private int[] color = new int[1000];
     private Stack<Integer> pilha;
 
-    //Construtor 
+    // Construtor
     public GrafoListaAdj(int vertices) {
         numVertices = vertices;
         adjListMap = new HashMap<Integer, List<Integer>>();
-        for (int i = 1; i <= vertices ; i++) {
+        for (int i = 1; i <= vertices; i++) {
             adjListMap.put(i, new LinkedList<Integer>());
         }
         this.pilha = new Stack<>();
     }
 
-    //Adicionar aresta nao direcionada
+    // Adicionar aresta nao direcionada
     public void addAresta(int i, int j) {
         if (i > adjListMap.size() || j > adjListMap.size()) {
             return;
@@ -40,7 +40,7 @@ public class GrafoListaAdj {
         destList.add(i);
     }
 
-    //Adicionar aresta direcionada 
+    // Adicionar aresta direcionada
     public void addArestaDirecionada(int origem, int destino) {
         if (origem > adjListMap.size() || destino > adjListMap.size()) {
             return;
@@ -56,15 +56,16 @@ public class GrafoListaAdj {
         List<Integer> srcList = adjListMap.get(i);
         srcList.add(j); // Adiciona o vértice j à lista de adjacência do vértice i
         List<Integer> destList = adjListMap.get(j);
-        destList.add(i); // Se o grafo for não direcionado, adicione o vértice i à lista de adjacência do vértice j
-        // Aqui você pode armazenar o peso da aresta em uma estrutura de dados adequada se precisar utilizá-lo posteriormente
+        destList.add(i); // Se o grafo for não direcionado, adicione o vértice i à lista de adjacência do
+                         // vértice j
+        // Aqui você pode armazenar o peso da aresta em uma estrutura de dados adequada
+        // se precisar utilizá-lo posteriormente
     }
 
-
-    //Remover aresta 
+    // Remover aresta
     public void removeAresta(int i, int j) {
         if (i > adjListMap.size() || j > adjListMap.size()) {
-           return;
+            return;
         }
 
         List<Integer> srcList = adjListMap.get(i);
@@ -74,7 +75,7 @@ public class GrafoListaAdj {
 
     }
 
-    //?
+    // ?
     public boolean isAresta(int i, int j) {
         if (i > adjListMap.size() || j > adjListMap.size()) {
             return false;
@@ -83,7 +84,7 @@ public class GrafoListaAdj {
         return srcList.contains(j);
     }
 
-    //Imprime a lista
+    // Imprime a lista
     public void imprimirLista() {
         for (Map.Entry<Integer, List<Integer>> entry : adjListMap.entrySet()) {
             int vertice = entry.getKey();
@@ -96,7 +97,7 @@ public class GrafoListaAdj {
         }
     }
 
-    //Obter a vizinhança de um vértice
+    // Obter a vizinhança de um vértice
     public List<Integer> vizinhanca(int vertice) {
         if (!adjListMap.containsKey(vertice)) {
             return new LinkedList<Integer>(); // Retorna uma lista vazia se o vértice não existir
@@ -104,15 +105,16 @@ public class GrafoListaAdj {
         return adjListMap.get(vertice);
     }
 
-    //Obter o grau de um vértice nao direcionado
+    // Obter o grau de um vértice nao direcionado
     public int grauVertice(int vertice) {
         if (!adjListMap.containsKey(vertice)) {
             return 0; // Retorna 0 se o vértice não existir
         }
-        return adjListMap.get(vertice).size(); //Grau de saida
+        return adjListMap.get(vertice).size(); // Grau de saida
     }
 
-    // Método para verificar se há uma aresta direcionada do vértice origem para o vértice destino
+    // Método para verificar se há uma aresta direcionada do vértice origem para o
+    // vértice destino
     public boolean isArestaDirecionada(int origem, int destino) {
         if (origem > adjListMap.size() || destino > adjListMap.size()) {
             return false;
@@ -138,29 +140,32 @@ public class GrafoListaAdj {
         for (Map.Entry<Integer, List<Integer>> entry : adjListMap.entrySet()) {
             List<Integer> vizinhos = entry.getValue();
             if (vizinhos.contains(vertice)) {
-                grauEntrada++; // Incrementa o grau de entrada para cada vértice que tem uma aresta entrando nele
+                grauEntrada++; // Incrementa o grau de entrada para cada vértice que tem uma aresta entrando
+                               // nele
             }
         }
         return grauEntrada;
     }
-    //retorna os sucessores
-    public List<Integer> getSucessores(int v) {
-    return new ArrayList<>(adjListMap.get(v));
-        }
-    //retorna os predecessores    
-    public List<Integer> getPredecessores(int v) {
-    List<Integer> predecessores = new ArrayList<>();
-    for (Map.Entry<Integer, List<Integer>> entry : adjListMap.entrySet()) {
-        if (entry.getValue().contains(v)) {
-            predecessores.add(entry.getKey());
-        }
-    }
-    return predecessores;
-    }
-    
-    //TESTES DO GRAFO
 
-    //Grafo simples
+    // retorna os sucessores
+    public List<Integer> getSucessores(int v) {
+        return new ArrayList<>(adjListMap.get(v));
+    }
+
+    // retorna os predecessores
+    public List<Integer> getPredecessores(int v) {
+        List<Integer> predecessores = new ArrayList<>();
+        for (Map.Entry<Integer, List<Integer>> entry : adjListMap.entrySet()) {
+            if (entry.getValue().contains(v)) {
+                predecessores.add(entry.getKey());
+            }
+        }
+        return predecessores;
+    }
+
+    // TESTES DO GRAFO
+
+    // Grafo simples
     public boolean isGrafoSimples() {
         for (Map.Entry<Integer, List<Integer>> entry : adjListMap.entrySet()) {
             int vertice = entry.getKey();
@@ -183,10 +188,10 @@ public class GrafoListaAdj {
         return true;
     }
 
-    //Grafo é regular
+    // Grafo é regular
     public boolean isGrafoRegular() {
         int grauReferencia;
-         grauReferencia = grauVertice(1); // Obtemos o grau do primeiro vértice como referência
+        grauReferencia = grauVertice(1); // Obtemos o grau do primeiro vértice como referência
         for (int vertice = 1; vertice <= numVertices; vertice++) {
             if (grauVertice(vertice) != grauVertice(grauReferencia)) {
                 return false; // Se algum vértice tem um grau diferente, o grafo não é regular
@@ -201,19 +206,20 @@ public class GrafoListaAdj {
         for (int i = 1; i <= numVertices; i++) {
             for (int j = 1; j <= numVertices; j++) {
                 if (i != j && !isAresta(i, j)) {
-                    return false; // Se não houver uma aresta entre dois vértices diferentes, o grafo não é completo
+                    return false; // Se não houver uma aresta entre dois vértices diferentes, o grafo não é
+                                  // completo
                 }
             }
         }
-        return true; // Se passar por todos os pares de vértices e houver uma aresta entre eles, o grafo é completo
+        return true; // Se passar por todos os pares de vértices e houver uma aresta entre eles, o
+                     // grafo é completo
     }
 
-     
     // Grafo é bipartido
-    public boolean Ebipartido(){ 
+    public boolean Ebipartido() {
         // Inicializa o array de cores com valores padrão
         Arrays.fill(color, -1);
-    
+
         // Itera sobre todos os vértices do grafo
         for (int i = 1; i <= numVertices; i++) {
             // Verifica se o vértice i ainda não foi visitado
@@ -228,15 +234,16 @@ public class GrafoListaAdj {
         // Se nenhum componente não bipartido foi encontrado, retorna true
         return true;
     }
+
     // Função utilitária para colorir os vértices e verificar se o grafo é bipartido
-    private boolean bipartidoUtil(int src) {  
+    private boolean bipartidoUtil(int src) {
         // Inicializa uma fila para realizar a busca em largura
         Queue<Integer> fila = new LinkedList<>();
         // Adiciona o vértice inicial na fila
         fila.add(src);
         // Atribui a cor 1 ao vértice inicial
         color[src] = 1;
-    
+
         // Enquanto a fila não estiver vazia
         while (!fila.isEmpty()) {
             // Remove o primeiro vértice da fila
@@ -258,26 +265,22 @@ public class GrafoListaAdj {
         // Se nenhum conflito foi encontrado, o grafo é bipartido
         return true;
     }
-        
 
-
-
-
-
-    //GRAFO DIRECIONADO
+    // GRAFO DIRECIONADO
     // Grafo direcionado é regular
     public boolean isGrafoRegularDirecionado() {
         int grauSaidaReferencia = grauSaida(1); // Obtemos o grau de saída do primeiro vértice como referência
         int grauEntradaReferencia = grauEntrada(1); // Obtemos o grau de entrada do primeiro vértice como referência
         for (int vertice = 2; vertice <= numVertices; vertice++) {
             if (grauSaida(vertice) != grauSaidaReferencia || grauEntrada(vertice) != grauEntradaReferencia) {
-                return false; // Se algum vértice tem um grau de saída ou de entrada diferente, o grafo não é regular
+                return false; // Se algum vértice tem um grau de saída ou de entrada diferente, o grafo não é
+                              // regular
             }
         }
-        return true; 
+        return true;
     }
 
-    //Grafo direcionado é completo
+    // Grafo direcionado é completo
     public boolean isGrafoCompletoDirecionado() {
         // Verifica se cada par de vértices distintos possui uma aresta direcionada
         for (int i = 1; i <= numVertices; i++) {
@@ -287,14 +290,14 @@ public class GrafoListaAdj {
                 }
             }
         }
-        return true; 
+        return true;
     }
 
     // Grafo direcionado é bipartido
     public boolean isGrafoBipartidoDirecionado() {
         // Inicializa o array para armazenar os conjuntos de vértices
         int[] conjuntos = new int[numVertices + 1];
-        
+
         // Executa a busca em profundidade (DFS) para atribuir os conjuntos aos vértices
         for (int i = 1; i <= numVertices; i++) {
             if (conjuntos[i] == 0 && !dfsBipartidoDirecionado(i, 1, conjuntos)) {
@@ -305,18 +308,20 @@ public class GrafoListaAdj {
         return true;
     }
 
-    // Função auxiliar para a busca em profundidade (DFS) em um grafo direcionado bipartido
+    // Função auxiliar para a busca em profundidade (DFS) em um grafo direcionado
+    // bipartido
     private boolean dfsBipartidoDirecionado(int vertice, int conjunto, int[] conjuntos) {
         // Atribui o conjunto atual ao vértice
         conjuntos[vertice] = conjunto;
-        
+
         // Percorre os vizinhos do vértice
         for (int vizinho : adjListMap.get(vertice)) {
             // Se o vizinho já estiver no mesmo conjunto, o grafo não é bipartido
             if (conjuntos[vizinho] == conjunto) {
                 return false;
             }
-            // Se o vizinho ainda não tiver conjunto atribuído, chama recursivamente a DFS com o conjunto oposto
+            // Se o vizinho ainda não tiver conjunto atribuído, chama recursivamente a DFS
+            // com o conjunto oposto
             else if (conjuntos[vizinho] == 0 && !dfsBipartidoDirecionado(vizinho, -conjunto, conjuntos)) {
                 return false;
             }
@@ -324,22 +329,17 @@ public class GrafoListaAdj {
         return true;
     }
 
+    // BUSCAS
 
-
-
-
-
-    //BUSCAS 
-
-    //Metdo para Busca em Largura 
+    // Metdo para Busca em Largura
     public static void bfs(int vertice1) {
 
-        //Caso o usuario digite um vertice que não está no grafo 
+        // Caso o usuario digite um vertice que não está no grafo
         if (vertice1 < 1 || vertice1 > numVertices) {
             System.out.println("\nVértice inválido.");
             return; // Retorna imediatamente se o vértice for inválido
         }
-        
+
         // Inicializa um array para controlar os vértices visitados
         boolean[] visitados = new boolean[numVertices + 1];
 
@@ -368,9 +368,8 @@ public class GrafoListaAdj {
         }
         System.out.print("]");
     }
-    
 
-    //Busca em prufudidade 
+    // Busca em prufudidade
     public void dfs(int vertice1) {
         boolean[] visitados = new boolean[numVertices + 1];
         System.out.print("\nA ordem da busca é: [ ");
@@ -392,10 +391,7 @@ public class GrafoListaAdj {
         }
     }
 
-
-
-
-    //GRAFO CONEXO 
+    // GRAFO CONEXO
     public boolean isGrafoConexoNaoDirecionado() {
         if (numVertices <= 0) {
             return false;
@@ -404,12 +400,12 @@ public class GrafoListaAdj {
         bfs(1, visitados);
         for (int i = 1; i <= numVertices; i++) {
             if (!visitados[i]) {
-                return false; 
+                return false;
             }
         }
         return true;
     }
-    
+
     private void bfs(int vertice, boolean[] visitados) {
         Queue<Integer> fila = new LinkedList<>();
         fila.add(vertice);
@@ -426,7 +422,7 @@ public class GrafoListaAdj {
         }
     }
 
-    //Direcionado
+    // Direcionado
     public boolean isGrafoConexoDirecionado() {
         if (numVertices <= 0) {
             return false;
@@ -435,12 +431,12 @@ public class GrafoListaAdj {
         dfs(1, visitados);
         for (int i = 1; i <= numVertices; i++) {
             if (!visitados[i]) {
-                return false; 
+                return false;
             }
         }
         return true;
     }
-    
+
     private void dfs(int vertice, boolean[] visitados) {
         visitados[vertice] = true;
         for (int vizinho : adjListMap.get(vertice)) {
@@ -492,7 +488,7 @@ public class GrafoListaAdj {
             custos.put(i, Integer.MAX_VALUE);
         }
         custos.put(origem, 0);
-        filaPrioridade.add(new int[]{origem, 0});
+        filaPrioridade.add(new int[] { origem, 0 });
 
         while (!filaPrioridade.isEmpty()) {
             int[] verticeAtual = filaPrioridade.poll();
@@ -504,16 +500,16 @@ public class GrafoListaAdj {
             }
 
             for (int vizinho : adjListMap.get(vertice)) {
-                int novoCusto = custoAtual + 1; 
-                
+                int novoCusto = custoAtual + 1;
+
                 if (novoCusto < custos.get(vizinho)) {
                     custos.put(vizinho, novoCusto);
                     predecessores.put(vizinho, vertice);
-                    filaPrioridade.add(new int[]{vizinho, novoCusto});
+                    filaPrioridade.add(new int[] { vizinho, novoCusto });
                 }
             }
         }
-        
+
         List<Integer> caminho = new ArrayList<>();
         int vertice = destino;
         while (predecessores.containsKey(vertice)) {
