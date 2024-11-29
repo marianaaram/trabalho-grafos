@@ -10,3 +10,13 @@ bin/utilitarios/GrafoMatrizAdj.class
 bin/utilitarios/GrafoPonderadoListaAdj.class
 bin/utilitarios/LimparTela.class
 bin/utilitarios/Pair.class
+.vscode/launch.json
+bin/aplicacao/main.class
+bin/utilitarios/GrafoListaAdj.class
+bin/utilitarios/GrafoMatrizAdj$Aresta.class
+bin/utilitarios/GrafoMatrizAdj$Conjunto.class
+bin/utilitarios/GrafoMatrizAdj$Resultado.class
+bin/utilitarios/GrafoMatrizAdj.class
+bin/utilitarios/GrafoPonderadoListaAdj.class
+bin/utilitarios/LimparTela.class
+bin/utilitarios/Pair.class
