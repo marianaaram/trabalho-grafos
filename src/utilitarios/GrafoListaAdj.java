@@ -447,6 +447,23 @@ public class GrafoListaAdj {
             }
         }
     }
+
+    public void exibirAdjacencias() {
+        System.out.println("Lista de Adjacência:");
+        for (int vertice : adjListMap.keySet()) {
+            System.out.print(vertice + " -> ");
+            List<Integer> vizinhos = adjListMap.get(vertice);
+            if (vizinhos.isEmpty()) {
+                System.out.println("Nenhum");
+            } else {
+                for (int vizinho : vizinhos) {
+                    System.out.print(vizinho + " ");
+                }
+                System.out.println();
+            }
+        }
+    }
+    
     
     // BUSCAS
 
