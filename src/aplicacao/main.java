@@ -139,6 +139,18 @@ public class main {
                   } else {
                     System.out.println("O grafo não é bipartido.");
                   }
+                  
+                  if (grafoListaAdj.isGrafoAciclico()) {
+                    System.out.println("O grafo é aciclico.");
+                  } else {
+                    System.out.println("O grafo não é aciclico.");
+                  }
+                  
+                  if (grafoListaAdj.isGrafoEuleriano()) {
+                    System.out.println("O grafo é euleriano.");
+                  } else {
+                    System.out.println("O grafo não é euleriano.");
+                  }
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
@@ -363,6 +375,18 @@ public class main {
                     System.out.println("O grafo é bipartido.");
                   } else {
                     System.out.println("O grafo não é bipartido.");
+                  }
+
+                  if (grafoListaAdj.isGrafoAciclico()) {
+                    System.out.println("O grafo é aciclico.");
+                  } else {
+                    System.out.println("O grafo não é aciclico.");
+                  }
+                  
+                  if (grafoListaAdj.isGrafoEuleriano()) {
+                    System.out.println("O grafo é euleriano.");
+                  } else {
+                    System.out.println("O grafo não é euleriano.");
                   }
 
                   System.out.println("\nDe enter para continuar");
@@ -608,6 +632,18 @@ public class main {
                     System.out.println("O grafo não é bipartido.");
                   }
 
+                  if (grafoListaAdj.isGrafoAciclico()){
+                    System.out.println("O grafo é aciclico.");
+                  } else {
+                    System.out.println("O grafo não é aciclico.");
+                  }
+
+                  if (grafoListaAdj.isGrafoEulerianoDirecionado()){
+                    System.out.println("O grafo é euleriano");
+                  } else {
+                    System.out.println("O grafo não é euleriano.");
+                  }
+
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
                   break;
@@ -837,6 +873,18 @@ public class main {
                     System.out.println("O grafo é bipartido.");
                   } else {
                     System.out.println("O grafo não é bipartido.");
+                  }
+
+                  if (grafoListaAdj.isGrafoAciclico()){
+                    System.out.println("O grafo é aciclico.");
+                  } else {
+                    System.out.println("O grafo não é aciclico.");
+                  }
+
+                  if (grafoListaAdj.isGrafoEulerianoDirecionado()){
+                    System.out.println("O grafo é euleriano");
+                  } else {
+                    System.out.println("O grafo não é euleriano.");
                   }
 
                   System.out.println("\nDe enter para continuar");
