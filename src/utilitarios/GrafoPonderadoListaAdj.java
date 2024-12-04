@@ -309,6 +309,65 @@ public class GrafoPonderadoListaAdj {
         return true; // Se passar por todos os pares de vértices e houver uma aresta entre eles, o
                      // grafo é completo
     }
+
+    public void floydWarshall() {
+        // Número de vértices no grafo
+        int n = adjListMap.size(); // Obtém o número de vértices através do tamanho do mapa
+
+        // Matriz de distâncias, inicialmente com valores infinitos
+        int[][] dist = new int[n + 1][n + 1]; // Usamos n+1 para que os índices comecem em 1 (para coincidir com a numeração de vértices)
+
+        // Inicializa a matriz com valores de arestas existentes ou infinito (não conectado)
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == j) {
+                    dist[i][j] = 0;  // Distância de um vértice para ele mesmo é 0
+                } else if (isArestaDirecionada(i, j)) {
+                    dist[i][j] = getPesoAresta(i, j);  // Peso da aresta entre i e j
+                } else {
+                    dist[i][j] = Integer.MAX_VALUE;  // Não há aresta entre i e j
+                }
+            }
+        }
+
+        // Algoritmo de Floyd-Warshall
+        for (int k = 1; k <= n; k++) {
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= n; j++) {
+                    // Se o caminho i -> k -> j for menor, atualiza a distância
+                    if (dist[i][k] != Integer.MAX_VALUE && dist[k][j] != Integer.MAX_VALUE &&
+                            dist[i][j] > dist[i][k] + dist[k][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        // Exibe as menores distâncias entre todos os vértices
+        System.out.println("Menores distâncias entre todos os pares de vértices:");
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (dist[i][j] == Integer.MAX_VALUE) {
+                    System.out.print("INF ");  // Caso não haja caminho entre os vértices
+                } else {
+                    System.out.print(dist[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    // Método para obter o peso da aresta entre dois vértices
+    public int getPesoAresta(int origem, int destino) {
+        List<Pair<Integer, Integer>> srcList = adjListMap.get(origem);
+        for (Pair<Integer, Integer> aresta : srcList) {
+            if (aresta.getKey() == destino) {
+                return aresta.getValue();  // Retorna o peso da aresta
+            }
+        }
+        return Integer.MAX_VALUE;  // Se não houver aresta, retorna infinito
+    }
+
 }
 
 class Pair<K, V> {

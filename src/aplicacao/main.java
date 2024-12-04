@@ -24,10 +24,10 @@ public class main {
     GrafoPonderadoListaAdj grafoPonderadoListaAdj = new GrafoPonderadoListaAdj(numVertices);
 
     // Definição de tipo
-    System.out.println("\nDigite 1 para criar um garfo nao direcionado\nDigite 2 para criar um garfo direcionado");
+    System.out.println("\nDigite 1 para criar um grafo nao direcionado\nDigite 2 para criar um grafo direcionado");
     int EDirecionado = scanner.nextInt();
 
-    System.out.println("\nDigite 1 para criar um garfo sem peso\nDigite 2 para criar um garfo ponderado (com peso)");
+    System.out.println("\nDigite 1 para criar um grafo sem peso\nDigite 2 para criar um grafo ponderado (com peso)");
     int EPonderado = scanner.nextInt();
 
     switch (EDirecionado) {
@@ -534,6 +534,16 @@ public class main {
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
+                  break;
+
+                case 15:
+                  LimparTela.limpar_console();
+
+                  // Chama o algoritmo de Floyd-Warshall para calcular as menores distâncias entre todos os vértices
+                  grafoPonderadoListaAdj.floydWarshall();
+
+                  System.out.println("\nDe enter para continuar");
+                  new java.util.Scanner(System.in).nextLine(); // Pausa até o enter
                   break;
 
                 default:
@@ -1049,6 +1059,16 @@ public class main {
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
+                  break;
+
+                case 15:
+                  LimparTela.limpar_console();
+
+                  // Chama o algoritmo de Floyd-Warshall para calcular as menores distâncias entre todos os vértices
+                  grafoPonderadoListaAdj.floydWarshall();
+
+                  System.out.println("\nDe enter para continuar");
+                  new java.util.Scanner(System.in).nextLine(); // Pausa até o enter
                   break;
 
                 default:
