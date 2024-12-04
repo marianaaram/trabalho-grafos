@@ -398,4 +398,50 @@ public class GrafoMatrizAdj {
         }
     }
 
+    public int[][] floydWarshall() {
+        int[][] dist = matriz;
+        
+        for(int i = 0; i < numVertices; i++) {
+            for(int k = 0; k < numVertices; k++) {
+                if(i == k){
+                    dist[i][k] = 0;
+                }
+                else {
+                    if(dist[i][k] == 0) {
+                        dist[i][k] = Integer.MAX_VALUE / 2;
+                    } 
+                }
+            }
+        }
+
+        // Atualiza a matriz de distâncias considerando caminhos intermediários
+        for (int k = 0; k < numVertices; k++) {
+            for (int i = 0; i < numVertices; i++) {
+                for (int j = 0; j < numVertices; j++) {
+                    if (dist[i][k] + dist[k][j] < dist[i][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        return dist; // Retorna a matriz de menores distâncias
+    }
+
+    // Exibir a matriz de menores distâncias
+    public void exibirMenoresCaminhos() {
+        int[][] dist = floydWarshall();
+
+        System.out.println("Matriz de Menores Caminhos:");
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
+                if (dist[i][j] == Integer.MAX_VALUE / 2) {
+                    System.out.print("INF ");
+                } else {
+                    System.out.print(dist[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
 }
