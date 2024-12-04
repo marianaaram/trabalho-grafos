@@ -43,7 +43,7 @@ public class main {
             do {
               System.out.println(
                   "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR A VIZINHANÇA DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPÓLOGICA \nDigite 11 para ÁRVORE GERADORA MÍNIMA\nDigite 12 para TESTAR SE O GRAFO É CONEXO\nDigite 13 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\n" + //
-"Digite 14 para verificar as adjacências\n\nDigite 0 para SAIR ");
+"Digite 14 para verificar as ADJACÊNCIAS\n\nDigite 0 para SAIR ");
               num = scanner.nextInt();
 
               switch (num) {
@@ -264,8 +264,15 @@ public class main {
                 
                 case 14:
                   LimparTela.limpar_console();
+                    
+                  System.out.println("\nDigite o vértice: ");
+                  int adj1 = scanner.nextInt();
 
-                  grafoListaAdj.exibirAdjacencias();
+                  System.out.println("\nDigite o vértice que deseja conferir  se é adjacente a " + adj1);
+                  int adj2 = scanner.nextInt();
+
+                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2); 
+
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
                 break;
@@ -287,7 +294,7 @@ public class main {
             do {
               System.out.println(
                   "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR A VIZINHANÇA DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPÓLOGICA \nDigite 11 para ÁRVORE GERADORA MÍNIMA\nDigite 12 para TESTAR SE O GRAFO É CONEXO\nDigite 13 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\n" + //
-"Digite 14 para verificar as adjacências\n\nDigite 0 para SAIR ");
+"Digite 14 para verificar as ADJACÊNCIAS\n\nDigite 0 para SAIR ");
               num = scanner.nextInt();
 
               switch (num) {
@@ -516,8 +523,15 @@ public class main {
 
                 case 14:
                   LimparTela.limpar_console();
+                  
+                  System.out.println("\nDigite o vértice: ");
+                  int adj1 = scanner.nextInt();
 
-                  grafoListaAdj.exibirAdjacencias();
+                  System.out.println("\nDigite o vértice que deseja conferir  se é adjacente a " + adj1);
+                  int adj2 = scanner.nextInt();
+
+                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2); 
+
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
                   break;
@@ -543,7 +557,7 @@ public class main {
 
             do {
               System.out.println(
-                  "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR OS SUCESSORES E PREDECESSORRES DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPOLÓGICA\nDigite 11 para TESTAR SE O GRAFO É CONEXO\nDigite 12 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 13 para verificar as adjacências\n\nDigite 0 para SAIR");
+                  "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR OS SUCESSORES E PREDECESSORRES DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPOLÓGICA\nDigite 11 para TESTAR SE O GRAFO É CONEXO\nDigite 12 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 13 para verificar as ADJACÊNCIAS\n\nDigite 0 para SAIR");
               num = scanner.nextInt();
 
               switch (num) {
@@ -767,8 +781,15 @@ public class main {
 
                 case 13:
                   LimparTela.limpar_console();
+                  
+                  System.out.println("\nDigite o vértice: ");
+                  int adj1 = scanner.nextInt();
 
-                  grafoListaAdj.exibirAdjacencias();
+                  System.out.println("\nDigite o vértice que deseja conferir  se é adjacente a " + adj1);
+                  int adj2 = scanner.nextInt();
+
+                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2); 
+
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
                   break;
@@ -790,7 +811,7 @@ public class main {
 
             do {
               System.out.println(
-                  "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR OS SUCESSORES E PREDECESSORRES DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPOLÓGICA\nDigite 11 para TESTAR SE O GRAFO É CONEXO\nDigite 12 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 13 para verificar as adjacências\n\nDigite 0 para SAIR");
+                  "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR OS SUCESSORES E PREDECESSORRES DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPOLÓGICA\nDigite 11 para TESTAR SE O GRAFO É CONEXO\nDigite 12 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 13 para verificar as ADJACÊNCIAS\n\nDigite 0 para SAIR");
               num = scanner.nextInt();
 
               switch (num) {
@@ -1017,8 +1038,15 @@ public class main {
 
                 case 13:
                   LimparTela.limpar_console();
+                  
+                  System.out.println("\nDigite o vértice: ");
+                  int adj1 = scanner.nextInt();
 
-                  grafoListaAdj.exibirAdjacencias();
+                  System.out.println("\nDigite o vértice que deseja conferir  se é adjacente a " + adj1);
+                  int adj2 = scanner.nextInt();
+
+                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2); 
+
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
                   break;

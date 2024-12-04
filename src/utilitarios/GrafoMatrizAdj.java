@@ -388,4 +388,14 @@ public class GrafoMatrizAdj {
         }
     }
 
+    public void exibirAdjacencias(int x, int y) {
+        if (matriz[x-1][y-1] ==1 ){ 
+            System.out.print("\nO vértice "+ x );
+            System.out.print(" é adjacente de "+ y);
+        } else{
+            System.out.print("\nO vértice "+ x);
+            System.out.print(" não é adjacente de "+ y);
+        }
+    }
+
 }

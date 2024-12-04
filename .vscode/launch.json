@@ -9,6 +9,13 @@
             "name": "main",
             "request": "launch",
             "mainClass": "aplicacao.main",
+            "projectName": "trabalho-grafos_3a5bf206"
+        },
+        {
+            "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "aplicacao.main",
             "projectName": "trabalho-grafos_59bae1ff"
         },
         {
