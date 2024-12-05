@@ -38,12 +38,12 @@ public class main {
           case 1:
             LimparTela.limpar_console();
             System.out.println("Um grafo não direcionado e não ponderado com " + numVertices
-                + " vértices foi criado usando Matriz e Lista de Adjacência.\n");
+                    + " vértices foi criado usando Matriz e Lista de Adjacência.\n");
 
             do {
               System.out.println(
-                  "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR A VIZINHANÇA DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPÓLOGICA \nDigite 11 para ÁRVORE GERADORA MÍNIMA\nDigite 12 para TESTAR SE O GRAFO É CONEXO\nDigite 13 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\n" + //
-"Digite 14 para verificar as ADJACÊNCIAS\n\nDigite 0 para SAIR ");
+                      "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR A VIZINHANÇA DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPÓLOGICA \nDigite 11 para ÁRVORE GERADORA MÍNIMA\nDigite 12 para TESTAR SE O GRAFO É CONEXO\nDigite 13 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\n" + //
+                              "Digite 14 para verificar as ADJACÊNCIAS\n\nDigite 0 para SAIR ");
               num = scanner.nextInt();
 
               switch (num) {
@@ -86,7 +86,7 @@ public class main {
                   int verticeViznho = scanner.nextInt();
 
                   System.out
-                      .println("A vizinhança de " + verticeViznho + " são: " + grafoListaAdj.vizinhanca(verticeViznho));
+                          .println("A vizinhança de " + verticeViznho + " são: " + grafoListaAdj.vizinhanca(verticeViznho));
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
 
@@ -98,7 +98,7 @@ public class main {
                   int verticeGrau = scanner.nextInt();
 
                   System.out
-                      .println("\nO grau do vértice " + verticeGrau + " é: " + grafoListaAdj.grauVertice(verticeGrau));
+                          .println("\nO grau do vértice " + verticeGrau + " é: " + grafoListaAdj.grauVertice(verticeGrau));
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
 
@@ -140,17 +140,18 @@ public class main {
                   } else {
                     System.out.println("O grafo não é bipartido.");
                   }
-                  
-                  if (grafoListaAdj.isGrafoAciclico()) {
-                    System.out.println("O grafo é aciclico.");
+
+                  if(grafoMatrizAdj.possuiCiclo()){
+                    System.out.println("O grafo não é aciclico");
                   } else {
-                    System.out.println("O grafo não é aciclico.");
+                    System.out.println("O grafo é aciclico");
                   }
-                  
-                  if (grafoListaAdj.isGrafoEuleriano()) {
-                    System.out.println("O grafo é euleriano.");
-                  } else {
-                    System.out.println("O grafo não é euleriano.");
+
+                  if(grafoMatrizAdj.isEuleriano()){
+                    System.out.println("O grafo é euleriano");
+                  }
+                  else {
+                    System.out.println("O grafo não é euleriano");
                   }
 
                   System.out.println("\nDe enter para continuar");
@@ -252,7 +253,7 @@ public class main {
 
                   if (!caminhoMinimo.isEmpty()) {
                     System.out
-                        .println("\nO caminho mínimo entre " + origem + " e " + destino + " é : " + caminhoMinimo);
+                            .println("\nO caminho mínimo entre " + origem + " e " + destino + " é : " + caminhoMinimo);
                   } else {
                     System.out.println("\nNão há caminho mínimo entre os vértices " + origem + " e " + destino + ".");
                   }
@@ -261,21 +262,21 @@ public class main {
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
 
                   break;
-                
+
                 case 14:
                   LimparTela.limpar_console();
-                    
+
                   System.out.println("\nDigite o vértice: ");
                   int adj1 = scanner.nextInt();
 
                   System.out.println("\nDigite o vértice que deseja conferir  se é adjacente a " + adj1);
                   int adj2 = scanner.nextInt();
 
-                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2); 
+                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2);
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
-                break;
+                  break;
                 default:
 
                   break;
@@ -289,11 +290,11 @@ public class main {
           case 2:
             LimparTela.limpar_console();
             System.out.println("Um grafo nao direcionado e ponderado com " + numVertices
-                + " vértices foi criado usando Matriz e Lista de Adjacência.\n");
+                    + " vértices foi criado usando Matriz e Lista de Adjacência.\n");
 
             do {
               System.out.println(
-                  "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR A VIZINHANÇA DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPÓLOGICA \nDigite 11 para ÁRVORE GERADORA MÍNIMA\nDigite 12 para TESTAR SE O GRAFO É CONEXO\nDigite 13 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 14 para verificar as ADJACÊNCIAS\nDigite 15 para identificar o CAMINHO MINIMO ENTRE TODOS OS VÉRTICES7\n\nDigite 0 para SAIR ");
+                      "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR A VIZINHANÇA DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPÓLOGICA \nDigite 11 para ÁRVORE GERADORA MÍNIMA\nDigite 12 para TESTAR SE O GRAFO É CONEXO\nDigite 13 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 14 para verificar as ADJACÊNCIAS\nDigite 15 para identificar o CAMINHO MINIMO ENTRE TODOS OS VÉRTICES7\n\nDigite 0 para SAIR ");
               num = scanner.nextInt();
 
               switch (num) {
@@ -339,7 +340,7 @@ public class main {
                   int verticeViznho = scanner.nextInt();
 
                   System.out
-                      .println("A vizinhança de " + verticeViznho + " são: " + grafoListaAdj.vizinhanca(verticeViznho));
+                          .println("A vizinhança de " + verticeViznho + " são: " + grafoListaAdj.vizinhanca(verticeViznho));
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
 
@@ -392,16 +393,17 @@ public class main {
                     System.out.println("O grafo não é bipartido.");
                   }
 
-                  if (grafoListaAdj.isGrafoAciclico()) {
-                    System.out.println("O grafo é aciclico.");
+                  if(grafoMatrizAdj.possuiCiclo()){
+                    System.out.println("O grafo não é aciclico");
                   } else {
-                    System.out.println("O grafo não é aciclico.");
+                    System.out.println("O grafo é aciclico");
                   }
-                  
-                  if (grafoListaAdj.isGrafoEuleriano()) {
-                    System.out.println("O grafo é euleriano.");
-                  } else {
-                    System.out.println("O grafo não é euleriano.");
+
+                  if(grafoMatrizAdj.isEuleriano()){
+                    System.out.println("O grafo é euleriano");
+                  }
+                  else {
+                    System.out.println("O grafo não é euleriano");
                   }
 
                   System.out.println("\nDe enter para continuar");
@@ -511,7 +513,7 @@ public class main {
 
                   if (!caminhoMinimo.isEmpty()) {
                     System.out
-                        .println("\nO caminho mínimo entre " + origem + " e " + destino + " é : " + caminhoMinimo);
+                            .println("\nO caminho mínimo entre " + origem + " e " + destino + " é : " + caminhoMinimo);
                   } else {
                     System.out.println("\nNão há caminho mínimo entre os vértices " + origem + " e " + destino + ".");
                   }
@@ -522,14 +524,14 @@ public class main {
 
                 case 14:
                   LimparTela.limpar_console();
-                  
+
                   System.out.println("\nDigite o vértice: ");
                   int adj1 = scanner.nextInt();
 
                   System.out.println("\nDigite o vértice que deseja conferir  se é adjacente a " + adj1);
                   int adj2 = scanner.nextInt();
 
-                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2); 
+                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2);
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
@@ -562,11 +564,11 @@ public class main {
           case 1:
             LimparTela.limpar_console();
             System.out.println("Um grafo direcionado não ponderado com " + numVertices
-                + " vértices foi criado usando Matriz e Lista de Adjacência.\n");
+                    + " vértices foi criado usando Matriz e Lista de Adjacência.\n");
 
             do {
               System.out.println(
-                  "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR OS SUCESSORES E PREDECESSORRES DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPOLÓGICA\nDigite 11 para TESTAR SE O GRAFO É CONEXO\nDigite 12 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 13 para verificar as ADJACÊNCIAS\n\nDigite 0 para SAIR");
+                      "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR OS SUCESSORES E PREDECESSORRES DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPOLÓGICA\nDigite 11 para TESTAR SE O GRAFO É CONEXO\nDigite 12 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 13 para verificar as ADJACÊNCIAS\n\nDigite 0 para SAIR");
               num = scanner.nextInt();
 
               switch (num) {
@@ -608,9 +610,9 @@ public class main {
                   int verticeSP = scanner.nextInt();
 
                   System.out.println(
-                      "\nOs sucessores do do vértice " + verticeSP + " são: " + grafoListaAdj.getSucessores(verticeSP));
+                          "\nOs sucessores do do vértice " + verticeSP + " são: " + grafoListaAdj.getSucessores(verticeSP));
                   System.out.println("Os predecessores do do vértice " + verticeSP + " são: "
-                      + grafoListaAdj.getPredecessores(verticeSP));
+                          + grafoListaAdj.getPredecessores(verticeSP));
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
@@ -623,9 +625,9 @@ public class main {
                   int verticeGrau = scanner.nextInt();
 
                   System.out.println("\nO grau de entrada do vértice " + verticeGrau + " é: "
-                      + grafoListaAdj.grauEntrada(verticeGrau));
+                          + grafoListaAdj.grauEntrada(verticeGrau));
                   System.out.println(
-                      "O grau de saída do vértice " + verticeGrau + " é: " + grafoListaAdj.grauVertice(verticeGrau));
+                          "O grau de saída do vértice " + verticeGrau + " é: " + grafoListaAdj.grauVertice(verticeGrau));
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
@@ -647,8 +649,8 @@ public class main {
                     int grauReferenciaEntrada = grafoListaAdj.grauEntrada(1);
                     int grauReferenciaSaida = grafoListaAdj.grauSaida(1);
                     System.out
-                        .println("O grafo é regular, todos os vértices têm os mesmos graus: " + grauReferenciaEntrada
-                            + " para grau de entrada e " + grauReferenciaSaida + " para grau de saída");
+                            .println("O grafo é regular, todos os vértices têm os mesmos graus: " + grauReferenciaEntrada
+                                    + " para grau de entrada e " + grauReferenciaSaida + " para grau de saída");
                   } else {
                     System.out.println("O grafo não é regular, seus vértices têm graus diferentes.");
                   }
@@ -672,16 +674,17 @@ public class main {
                     System.out.println("O grafo não é bipartido.");
                   }
 
-                  if (grafoListaAdj.isGrafoAciclico()){
-                    System.out.println("O grafo é aciclico.");
+                  if(grafoMatrizAdj.possuiCiclo()){
+                    System.out.println("O grafo não é aciclico");
                   } else {
-                    System.out.println("O grafo não é aciclico.");
+                    System.out.println("O grafo é aciclico");
                   }
 
-                  if (grafoListaAdj.isGrafoEulerianoDirecionado()){
+                  if(grafoMatrizAdj.isEuleriano()){
                     System.out.println("O grafo é euleriano");
-                  } else {
-                    System.out.println("O grafo não é euleriano.");
+                  }
+                  else {
+                    System.out.println("O grafo não é euleriano");
                   }
 
                   System.out.println("\nDe enter para continuar");
@@ -777,10 +780,10 @@ public class main {
 
                   if (!caminhoMinimo.isEmpty()) {
                     System.out.println(
-                        "\nO caminho mínimo entre " + origem_dir + " e " + destino_dir + " é : " + caminhoMinimo);
+                            "\nO caminho mínimo entre " + origem_dir + " e " + destino_dir + " é : " + caminhoMinimo);
                   } else {
                     System.out
-                        .println("\nNão há caminho mínimo entre os vértices " + origem_dir + " e " + destino_dir + ".");
+                            .println("\nNão há caminho mínimo entre os vértices " + origem_dir + " e " + destino_dir + ".");
                   }
 
                   System.out.println("\nDe enter para continuar");
@@ -790,14 +793,14 @@ public class main {
 
                 case 13:
                   LimparTela.limpar_console();
-                  
+
                   System.out.println("\nDigite o vértice: ");
                   int adj1 = scanner.nextInt();
 
                   System.out.println("\nDigite o vértice que deseja conferir  se é adjacente a " + adj1);
                   int adj2 = scanner.nextInt();
 
-                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2); 
+                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2);
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
@@ -816,11 +819,11 @@ public class main {
 
             LimparTela.limpar_console();
             System.out.println("Um grafo direcionado ponderado com " + numVertices
-                + " vértices foi criado usando Matriz e Lista de Adjacência.\n");
+                    + " vértices foi criado usando Matriz e Lista de Adjacência.\n");
 
             do {
               System.out.println(
-                  "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR OS SUCESSORES E PREDECESSORRES DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPOLÓGICA\nDigite 11 para TESTAR SE O GRAFO É CONEXO\nDigite 12 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 13 para verificar as ADJACÊNCIAS\nDigite 15 para identificar o CAMINHO MINIMO ENTRE TODOS OS VÉRTICES\n\nDigite 0 para SAIR");
+                      "\nDigite 1 para CRIAR ARESTAS\nDigite 2 para REMOVER ARESTAS\nDigite 3 para IDENTIFICAR OS SUCESSORES E PREDECESSORRES DE UM VÉRTICE\nDigite 4 para IDENTIFICAR O GRAU DE UM VÉRTICE\nDigite 5 para TESTAR O GRAFO\nDigite 6 para REPRESENTAÇÃO EM MATRIZ\nDigite 7 para REPRESENTAÇÃO EM LISTA\nDigite 8 para BUSCA EM LARGURA\nDigite 9 para BUSCA EM PROFUNDIDADE\nDigite 10 para ORDENAÇÃO TOPOLÓGICA\nDigite 11 para TESTAR SE O GRAFO É CONEXO\nDigite 12 para identificar o CAMINHO MÍNIMO DE DOIS VÉRTICES\nDigite 13 para verificar as ADJACÊNCIAS\nDigite 15 para identificar o CAMINHO MINIMO ENTRE TODOS OS VÉRTICES\n\nDigite 0 para SAIR");
               num = scanner.nextInt();
 
               switch (num) {
@@ -865,9 +868,9 @@ public class main {
                   int verticeSP = scanner.nextInt();
 
                   System.out.println("\nOs sucessores do do vértice " + verticeSP + " são: "
-                      + grafoPonderadoListaAdj.getSucessores(verticeSP));
+                          + grafoPonderadoListaAdj.getSucessores(verticeSP));
                   System.out.println("Os predecessores do do vértice " + verticeSP + " são: "
-                      + grafoPonderadoListaAdj.getPredecessores(verticeSP));
+                          + grafoPonderadoListaAdj.getPredecessores(verticeSP));
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
@@ -880,9 +883,9 @@ public class main {
                   int verticeGrau = scanner.nextInt();
 
                   System.out.println("\nO grau de entrada do vértice " + verticeGrau + " é: "
-                      + grafoMatrizAdj.grauEntrada(verticeGrau));
+                          + grafoMatrizAdj.grauEntrada(verticeGrau));
                   System.out.println(
-                      "O grau de saída do vértice " + verticeGrau + " é: " + grafoMatrizAdj.grauVertice(verticeGrau));
+                          "O grau de saída do vértice " + verticeGrau + " é: " + grafoMatrizAdj.grauVertice(verticeGrau));
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter
@@ -904,8 +907,8 @@ public class main {
                     int grauReferenciaEntrada = grafoMatrizAdj.grauEntrada(1);
                     int grauReferenciaSaida = grafoMatrizAdj.grauSaida(1);
                     System.out
-                        .println("O grafo é regular, todos os vértices têm os mesmos graus: " + grauReferenciaEntrada
-                            + " para grau de entrada e " + grauReferenciaSaida + " para grau de saída");
+                            .println("O grafo é regular, todos os vértices têm os mesmos graus: " + grauReferenciaEntrada
+                                    + " para grau de entrada e " + grauReferenciaSaida + " para grau de saída");
                   } else {
                     System.out.println("O grafo não é regular, seus vértices têm graus diferentes.");
                   }
@@ -929,16 +932,17 @@ public class main {
                     System.out.println("O grafo não é bipartido.");
                   }
 
-                  if (grafoListaAdj.isGrafoAciclico()){
-                    System.out.println("O grafo é aciclico.");
+                  if(grafoMatrizAdj.possuiCiclo()){
+                    System.out.println("O grafo não é aciclico");
                   } else {
-                    System.out.println("O grafo não é aciclico.");
+                    System.out.println("O grafo é aciclico");
                   }
 
-                  if (grafoListaAdj.isGrafoEulerianoDirecionado()){
+                  if(grafoMatrizAdj.isEuleriano()){
                     System.out.println("O grafo é euleriano");
-                  } else {
-                    System.out.println("O grafo não é euleriano.");
+                  }
+                  else {
+                    System.out.println("O grafo não é euleriano");
                   }
 
                   System.out.println("\nDe enter para continuar");
@@ -1034,10 +1038,10 @@ public class main {
 
                   if (!caminhoMinimo.isEmpty()) {
                     System.out.println(
-                        "\nO caminho mínimo entre " + origem_dir + " e " + destino_dir + " é : " + caminhoMinimo);
+                            "\nO caminho mínimo entre " + origem_dir + " e " + destino_dir + " é : " + caminhoMinimo);
                   } else {
                     System.out
-                        .println("\nNão há caminho mínimo entre os vértices " + origem_dir + " e " + destino_dir + ".");
+                            .println("\nNão há caminho mínimo entre os vértices " + origem_dir + " e " + destino_dir + ".");
                   }
 
                   System.out.println("\nDe enter para continuar");
@@ -1047,14 +1051,14 @@ public class main {
 
                 case 13:
                   LimparTela.limpar_console();
-                  
+
                   System.out.println("\nDigite o vértice: ");
                   int adj1 = scanner.nextInt();
 
                   System.out.println("\nDigite o vértice que deseja conferir  se é adjacente a " + adj1);
                   int adj2 = scanner.nextInt();
 
-                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2); 
+                  grafoMatrizAdj.exibirAdjacencias(adj1, adj2);
 
                   System.out.println("\nDe enter para continuar");
                   new java.util.Scanner(System.in).nextLine(); // Pausa ate o enter

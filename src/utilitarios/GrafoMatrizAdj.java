@@ -310,7 +310,7 @@ public class GrafoMatrizAdj {
         for (int vertice = 2; vertice <= numVertices; vertice++) {
             if (grauSaida(vertice) != grauSaidaReferencia || grauEntrada(vertice) != grauEntradaReferencia) {
                 return false; // Se algum vértice tem um grau de saída ou de entrada diferente, o grafo não é
-                              // regular
+                // regular
             }
         }
         return true;
@@ -389,7 +389,7 @@ public class GrafoMatrizAdj {
     }
 
     public void exibirAdjacencias(int x, int y) {
-        if (matriz[x-1][y-1] ==1 ){ 
+        if (matriz[x-1][y-1] ==1 ){
             System.out.print("\nO vértice "+ x );
             System.out.print(" é adjacente de "+ y);
         } else{
@@ -400,7 +400,7 @@ public class GrafoMatrizAdj {
 
     public int[][] floydWarshall() {
         int[][] dist = matriz;
-        
+
         for(int i = 0; i < numVertices; i++) {
             for(int k = 0; k < numVertices; k++) {
                 if(i == k){
@@ -409,7 +409,7 @@ public class GrafoMatrizAdj {
                 else {
                     if(dist[i][k] == 0) {
                         dist[i][k] = Integer.MAX_VALUE / 2;
-                    } 
+                    }
                 }
             }
         }
@@ -442,6 +442,107 @@ public class GrafoMatrizAdj {
                 }
             }
             System.out.println();
+        }
+    }
+
+    // Método para verificar se o grafo possui ciclo
+    public boolean possuiCiclo() {
+        boolean[] visitado = new boolean[numVertices];
+        for (int v = 0; v < numVertices; v++) {
+            if (!visitado[v]) { // Se o vértice não foi visitado
+                if (dfsCiclo(v, visitado, -1)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Função auxiliar de DFS para detectar ciclos
+    private boolean dfsCiclo(int vertice, boolean[] visitado, int pai) {
+        visitado[vertice] = true;
+
+        for (int adj = 0; adj < numVertices; adj++) {
+            if (matriz[vertice][adj] != 0) { // Existe uma conexão
+                if (!visitado[adj]) { // Se o vértice adjacente não foi visitado
+                    if (dfsCiclo(adj, visitado, vertice)) {
+                        return true;
+                    }
+                } else if (adj != pai) { // Se o vértice adjacente é visitado e não é o pai
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // Método para verificar se o grafo é Euleriano
+    public boolean isEuleriano() {
+        // Verificar se o grafo é conexo
+        if (!ehConexo()) {
+            return false;
+        }
+
+        // Verificar se todos os vértices têm grau par
+        for (int i = 0; i < numVertices; i++) {
+            int grau = 0;
+            for (int j = 0; j < numVertices; j++) {
+                if (matriz[i][j] != 0) {
+                    grau++;
+                }
+            }
+            if (grau % 2 != 0) { // Se o grau for ímpar
+                return false;
+            }
+        }
+
+        return true; // O grafo é Euleriano
+    }
+
+    // Método auxiliar para verificar se o grafo é conexo
+    private boolean ehConexo() {
+        boolean[] visitado = new boolean[numVertices];
+
+        // Encontre o primeiro vértice com grau diferente de 0
+        int verticeInicial = -1;
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
+                if (matriz[i][j] != 0) {
+                    verticeInicial = i;
+                    break;
+                }
+            }
+            if (verticeInicial != -1) {
+                break;
+            }
+        }
+
+        if (verticeInicial == -1) {
+            return false; // Grafo sem arestas
+        }
+
+        // Realizar DFS a partir do vértice inicial
+        dfs(verticeInicial, visitado);
+
+        // Verificar se todos os vértices com grau maior que 0 foram visitados
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
+                if (matriz[i][j] != 0 && !visitado[i]) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private void dfs(int vertice, boolean[] visitado) {
+        visitado[vertice] = true;
+
+        for (int adj = 0; adj < numVertices; adj++) {
+            if (matriz[vertice][adj] != 0 && !visitado[adj]) {
+                dfs(adj, visitado);
+            }
         }
     }
 }

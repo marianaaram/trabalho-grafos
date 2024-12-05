@@ -57,7 +57,7 @@ public class GrafoListaAdj {
         srcList.add(j); // Adiciona o vértice j à lista de adjacência do vértice i
         List<Integer> destList = adjListMap.get(j);
         destList.add(i); // Se o grafo for não direcionado, adicione o vértice i à lista de adjacência do
-                         // vértice j
+        // vértice j
         // Aqui você pode armazenar o peso da aresta em uma estrutura de dados adequada
         // se precisar utilizá-lo posteriormente
     }
@@ -141,7 +141,7 @@ public class GrafoListaAdj {
             List<Integer> vizinhos = entry.getValue();
             if (vizinhos.contains(vertice)) {
                 grauEntrada++; // Incrementa o grau de entrada para cada vértice que tem uma aresta entrando
-                               // nele
+                // nele
             }
         }
         return grauEntrada;
@@ -207,12 +207,12 @@ public class GrafoListaAdj {
             for (int j = 1; j <= numVertices; j++) {
                 if (i != j && !isAresta(i, j)) {
                     return false; // Se não houver uma aresta entre dois vértices diferentes, o grafo não é
-                                  // completo
+                    // completo
                 }
             }
         }
         return true; // Se passar por todos os pares de vértices e houver uma aresta entre eles, o
-                     // grafo é completo
+        // grafo é completo
     }
 
     // Grafo é bipartido
@@ -266,62 +266,6 @@ public class GrafoListaAdj {
         return true;
     }
 
-    public boolean isGrafoAciclico() {
-        boolean[] visitados = new boolean[numVertices + 1];
-        boolean[] recStack = new boolean[numVertices + 1];
-
-        for (int v = 1; v <= numVertices; v++) {
-            if (!visitados[v] && detectarCiclos(v, visitados, recStack)) {
-                return false; // Há um ciclo
-            }
-        }
-        return true; // Não há ciclos
-    }
-
-    private boolean detectarCiclos(int v, boolean[] visitados, boolean[] recStack) {
-        visitados[v] = true;
-        recStack[v] = true;
-
-        for (int vizinho : adjListMap.get(v)) {
-            if (!visitados[vizinho] && detectarCiclos(vizinho, visitados, recStack)) {
-                return true; // Encontrou ciclo
-            } else if (recStack[vizinho]) {
-                return true; // Encontrou ciclo
-            }
-        }
-
-        recStack[v] = false;
-        return false;
-    }
-
-    public boolean isGrafoEuleriano() {
-        boolean[] visited = new boolean[numVertices + 1];
-        int startVertex = -1;
-
-        // Encontra um vértice com arestas para começar a DFS
-        for (int v = 1; v <= numVertices; v++) {
-            if (adjListMap.get(v).size() > 0) {
-                startVertex = v;
-                break;
-            }
-        }
-
-        if (startVertex == -1) {
-            return true; // Grafo vazio é considerado conexo
-        }
-
-        dfs(startVertex, visited);
-
-        // Verifica se todos os vértices com arestas foram visitados
-        for (int v = 1; v <= numVertices; v++) {
-            if (adjListMap.get(v).size() > 0 && !visited[v]) {
-                return false; // Grafo desconexo
-            }
-        }
-
-        return true;
-    }
-    
     // GRAFO DIRECIONADO
     // Grafo direcionado é regular
     public boolean isGrafoRegularDirecionado() {
@@ -330,7 +274,7 @@ public class GrafoListaAdj {
         for (int vertice = 2; vertice <= numVertices; vertice++) {
             if (grauSaida(vertice) != grauSaidaReferencia || grauEntrada(vertice) != grauEntradaReferencia) {
                 return false; // Se algum vértice tem um grau de saída ou de entrada diferente, o grafo não é
-                              // regular
+                // regular
             }
         }
         return true;
@@ -385,23 +329,9 @@ public class GrafoListaAdj {
         return true;
     }
 
-    public boolean isGrafoEulerianoDirecionado() {
-        if (!eFortementeConexo()) {
-            return false;
-        }
-    
-        for (int v = 1; v <= numVertices; v++) {
-            if (grauEntrada(v) != grauSaida(v)) {
-                return false; // Grau de entrada e saída não são iguais
-            }
-        }
-    
-        return true; // É Euleriano
-    }
-
     private boolean eFortementeConexo() {
         boolean[] visitado = new boolean[numVertices + 1];
-    
+
         // Verifica conectividade do grafo original
         dfs(1, visitado);
         for (int vertice = 1; vertice <= numVertices; vertice++) {
@@ -409,10 +339,10 @@ public class GrafoListaAdj {
                 return false; // Não é fortemente conexo
             }
         }
-    
+
         // Cria o grafo transposto
         Map<Integer, List<Integer>> grafoTransposto = obterGrafoTransposto();
-    
+
         // Verifica conectividade do grafo transposto
         visitado = new boolean[numVertices + 1];
         dfsTransposto(1, visitado, grafoTransposto);
@@ -421,10 +351,10 @@ public class GrafoListaAdj {
                 return false; // Não é fortemente conexo
             }
         }
-    
+
         return true;
     }
-    
+
     private Map<Integer, List<Integer>> obterGrafoTransposto() {
         Map<Integer, List<Integer>> grafoTransposto = new HashMap<>();
         for (int vertice = 1; vertice <= numVertices; vertice++) {
@@ -437,10 +367,10 @@ public class GrafoListaAdj {
         }
         return grafoTransposto;
     }
-    
+
     private void dfsTransposto(int vertice, boolean[] visitado, Map<Integer, List<Integer>> grafo) {
         visitado[vertice] = true;
-    
+
         for (int vizinho : grafo.get(vertice)) {
             if (!visitado[vizinho]) {
                 dfsTransposto(vizinho, visitado, grafo);
@@ -448,9 +378,9 @@ public class GrafoListaAdj {
         }
     }
 
-    
-    
-    
+
+
+
     // BUSCAS
 
     // Metdo para Busca em Largura
